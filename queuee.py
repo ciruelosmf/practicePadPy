@@ -11,7 +11,8 @@ from queue import Queue
 def test_q(name):
     threadname = threading.current_thread().name
     logging.info(f"start: {threadname}")
-    ret = "hello " + name 
+    print(f"start: {threadname}")
+    ret = "hello " + name   
     return ret
 def pooled(): 
     workers = 20
@@ -19,11 +20,13 @@ def pooled():
     with ThreadPoolExecutor(max_workers=workers) as ex:
         for x in range(workers):
             v = random.randrange(1,5)
-            future =ex.submit(test_q, "B")
+            future=ex.submit(test_q, "B"+str(x))
             ret.append(future)
     logging.info("h34ola")
+    
     for r in ret:
-        logging.info(f'r.result()')
+        print(r.result())
+        logging.info(r.result())
 def main():
     logging.basicConfig(format="%(levelname)s - %(asctime)s.%(msecs)03d: %(message)")
     logging.info("app")
@@ -31,3 +34,23 @@ def main():
 if __name__ == "__main__":
     main()
     print("hola")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
