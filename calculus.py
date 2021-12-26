@@ -1,17 +1,22 @@
 def aa(x):
   return x**2
 
-print(f(3))
+print(aa(3))
 
 
 def deriv(aa,x):
+  deltax=(1/1000000)
+  return (aa(x+deltax) - aa(x))/deltax
+  
+for i in range(-3,4):
+  print(i,deriv(aa,i))
 
-  deltax=(1/1000000)
-  return (aa(x+deltax) - aa(x))/deltax
 
-import matplotlib.pyplot as plt
-import numpy as np
+# import matplotlib.pyplot as plt
+# import numpy as np
 
+
+"""
 # 100 linearly spaced numbers
 x = np.linspace(0,1,10)
 eta1=0.05
@@ -35,3 +40,4 @@ plt.plot(x,y, 'r')
 
 # show the plot
 plt.show()
+"""
